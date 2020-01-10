@@ -45,9 +45,9 @@
 </head>
 <body>
     <div id="wrap">
-        <div id="header">
+        <!-- <div id="header">
             <h1>艾泰云APP</h1>
-        </div>
+        </div> -->
         <div id="main">
                 
         </div>
@@ -61,22 +61,22 @@
     apiready = function(){
 		// console.log("Hello APICloud");
 
-        var header = $api.byId('header');
+        // var header = $api.byId('header');
         //适配iOS 7+，Android 4.4+状态栏
-        $api.fixStatusBar(header);
+        // $api.fixStatusBar(header);
 
-        var headerPos = $api.offset(header);
-        var main = $api.byId('main');
-        var mainPos = $api.offset(main);
+        // var headerPos = $api.offset(header);
+        // var main = $api.byId('main');
+        // var mainPos = $api.offset(main);
         api.openFrame({
-            name: 'main',
+            name: 'login',
             url: 'html/login.html',
             bounces: true,
             rect: {
                 x: 0,
-                y: headerPos.h,
+                y: 0,
                 w: 'auto',
-                h: mainPos.h
+                h: 'auto'
             }
         });
     };
