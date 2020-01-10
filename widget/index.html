@@ -45,15 +45,15 @@
 </head>
 <body>
     <div id="wrap">
-       <!--  <div id="header">
+        <div id="header">
             <h1>APICloud</h1>
-        </div> -->
+        </div>
         <div id="main">
                 
         </div>
-      <!--   <div id="footer">
+        <div id="footer">
             <h5>Copyright &copy;<span id="year"></span> </h5>
-        </div> -->
+        </div>
     </div>
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
@@ -61,9 +61,9 @@
     apiready = function(){
 		// console.log("Hello APICloud");
 
-        // var header = $api.byId('header');
+        var header = $api.byId('header');
         //适配iOS 7+，Android 4.4+状态栏
-        // $api.fixStatusBar(header);
+        $api.fixStatusBar(header);
 
         var headerPos = $api.offset(header);
         var main = $api.byId('main');
@@ -80,8 +80,8 @@
             }
         });
 
-        // var year = $api.byId('year');
-        // year.innerHTML = new Date().getFullYear();
+        var year = $api.byId('year');
+        year.innerHTML = new Date().getFullYear();
 
     };
 </script>
