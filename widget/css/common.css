@@ -1,0 +1,18 @@
+@charset "utf-8";
+.btn {
+  display: table;
+  width: 78.9vw;
+  /*height: 11.3vw;*/
+  background-color: #0781fe;
+  color: #fff;
+  font-size: 4.3vw;
+  border-radius: 50px;
+  text-align: center;
+  /*line-height: 6.4vh;*/
+  cursor: pointer;
+  padding: 3.7vw 0;
+  margin: 0 auto;
+}
+.btnMar {
+  margin-top: 13.1vw;
+}

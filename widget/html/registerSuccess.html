@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/login.css">
+    <style>
+        #sys-info .registerTitle{
+            padding-bottom:4.8vw;
+        }
+        #sys-info p:nth-child(2){
+            font-size: 3.2vw;
+            color:#b8b8b8;
+            text-align: center;
+            margin-bottom: 89.9vw;
+        }
+    </style>
+</head>
+<body>
+    <div id='sys-info'>
+        <p class="registerTitle">注册成功</p>
+        <p>将使用您的注册的账户进行登录</p>
+        <button class="btn">继续</button>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        var btn = api.appId('btn');
+        console.log(btn)
+    };
+</script>
+</html>

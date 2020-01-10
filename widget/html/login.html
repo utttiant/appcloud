@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+	<div id='sys-info'>
+		<p class="title">欢迎使用艾网络</p>
+		<div id="user">
+			<p class="userName"><input type="text" placeholder="请输入您的用户名"></p>
+			<p class="pwd" id="lastP"><input type="text" placeholder="请输入您的密码"><img src="../image/login/hide.png" alt="" class="pwdHide"></p>
+			<p class="forgetPwd">忘记密码？</p>
+			<button class="btn" id="btn">登录</button>
+			<p class="register"><span>还没有账号</span><span>立即注册</span></p>
+			<p class="nooLogin" >暂不登录</p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+    	var btn = api.appId('btn');
+    	console.log(btn)
+    };
+</script>
+</html>
