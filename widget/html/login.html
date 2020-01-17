@@ -39,8 +39,11 @@
 	var 
     apiready = function(){
     	dialogBox = api.require('dialogBox');
-    	var btn = api.appId('btn');
-    	alert(btn)
+    	var appId = api.appId('btn'); 
+    	// api.addEventListener()
+    	api.addEventListener(appId,'click', function(ret, err) {
+		    alert('已连接网络');
+		});
     // 	 api.addEventListener($api.byId('btn'), 'click', function() {
 
 		  //   alert('aaaa')
