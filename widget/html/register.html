@@ -16,13 +16,30 @@
             <p class="iphoneCode"><input type="text" placeholder="请输入验证码"></p>
 			<p class="userName"><input type="text" placeholder="请输入您的用户名"></p>
 			<p class="pwd" id="lastP"><input type="text" placeholder="请输入您的密码"><img src="../image/login/hide.png" alt="" class="pwdHide"></p>
-			<button class="btn btnMar" id="btn">注册</button>
+			<button class="btn btnMar" id="btn" tapmode="tap-active" onclick="success()">注册</button>
 		</div>
 	</div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script src="../script/common.js"></script>
 <script type="text/javascript">
+    var success = function(){
+        api.openFrame({
+            name: 'success',
+            url: './registerSuccess.html',
+            bounces: true,
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 'auto'
+            }
+        });
+        api.setFrameAttr({
+            name: 'success',
+            hidden: true
+        });
+    }
     apiready = function(){
     	
     };
