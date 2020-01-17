@@ -9,24 +9,20 @@
     <link rel="stylesheet" href="../css/login.css">
     <style>
         #sys-info .registerTitle{
-            padding-bottom:4.8vw;
-        }
-        #sys-info p:nth-child(2){
-            font-size: 3.2vw;
-            color:#b8b8b8;
-            text-align: center;
-            margin-bottom: 89.9vw;
-        }
+        padding-bottom: 0.36rem;
+
+    }
     </style>
 </head>
 <body>
-    <div id='sys-info'>
+    <div id='sys-info' class="success">
         <p class="registerTitle">注册成功</p>
         <p>将使用您的注册的账户进行登录</p>
         <button class="btn">继续</button>
     </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
 <script type="text/javascript">
     apiready = function(){
         var btn = $api.appId('btn');
