@@ -26,8 +26,8 @@
 			<p class="userName"><input type="text" placeholder="请输入您的用户名"></p>
 			<p class="pwd" id="lastP"><input type="text" placeholder="请输入您的密码"><img src="../image/login/hide.png" alt="" class="pwdHide"></p>
 			<p class="forgetPwd">忘记密码？</p>
-			<button class="btn" id="btn" onclick="login()">登录</button>
-			<p class="register"><span>还没有账号</span><span onclick="dialogBox_alert1()">立即注册</span></p>
+			<button class="btn" id="btn" onclick="dialogBox_alert1()">登录</button>
+			<p class="register"><span>还没有账号</span><span onclick="register()">立即注册</span></p>
 			<p class="nooLogin" >暂不登录</p>
 		</div>
 	</div>
@@ -36,12 +36,26 @@
 <script src="../script/common.js"></script>
 <script type="text/javascript">
 	var dialogBox;
+	var 
     apiready = function(){
     	dialogBox = api.require('dialogBox');
-
+    	// api.parseT
     	// 
     	
     };
+    function register(){
+    	api.openFrame({
+            name: 'register',
+            url: 'html/register.html',
+            bounces: true,
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 'auto'
+            }
+        });
+    }
     function dialogBox_alert1() {
     dialogBox.alert({
         texts : {
