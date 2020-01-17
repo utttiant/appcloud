@@ -39,7 +39,7 @@
 	var validator;
 	apiready = function(){
     	dialogBox = api.require('dialogBox');
-    	validator = api.require('validator')
+    	// validator = api.require('validator');
     };
     var register = function(){
     	api.openFrame({
@@ -76,7 +76,7 @@
         });
     }
     var login = function(){
-    	var user = $api.byId('user').value;
+    	var user = $api.byId('user').val;
     	alert(user)
     }
     
