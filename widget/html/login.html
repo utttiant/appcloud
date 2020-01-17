@@ -23,8 +23,8 @@
 	<div id='sys-info'>
 		<p class="title">欢迎使用艾网络</p>
 		<div id="user">
-			<p class="userName"><input type="text" placeholder="请输入您的用户名"></p>
-			<p class="pwd" id="lastP"><input type="text" placeholder="请输入您的密码"><img src="../image/login/hide.png" alt="" class="pwdHide"></p>
+			<p class="userName"><input type="text" placeholder="请输入您的用户名" id="user"></p>
+			<p class="pwd" id="lastP"><input type="text" placeholder="请输入您的密码" id="pwd"><img src="../image/login/hide.png" alt="" class="pwdHide"></p>
 			<p class="forgetPwd" tapmode="tap-active" onclick="pwd()">忘记密码？</p>
 			<button class="btn" id="btn" tapmode="tap-active" onclick="login()">登录</button>
 			<p class="register"><span>还没有账号</span><span tapmode="tap-active" onclick="register()">立即注册</span></p>
@@ -76,52 +76,17 @@
         });
     }
     var login = function(){
-
+    	var user = $api.byId('user').value;
+    	alert(user)
     }
     
-    function dialogBox_alert1() {
+    function dialogBox_alert1(text) {
     dialogBox.alert({
         texts : {
-            title : ' 确认',
-            content : '您是游客状态，是否登录？',
+            title : '提示',
+            content : text,
             leftBtnTitle : '取消',
             rightBtnTitle : '登录'
-        },
-        styles : {
-            bg : '#fff',
-            corner : 6,
-            w : 260,
-            title : {
-                marginT : 20,
-                icon : 'widget://image/gou.png',
-                iconSize : 32,
-                titleSize : 18,
-                titleColor : '#000'
-            },
-            content : {
-                color : '#000',
-                size : 16
-            },
-            left : {
-                marginB : 15,
-                marginL : 40,
-                w : 40,
-                h : 35,
-                corner : 2,
-                color : "#000",
-                bg : '#fff',
-                size : 16
-            },
-            right : {
-                marginB : 15,
-                marginL : 88,
-                w : 40,
-                h : 35,
-                corner : 2,
-                color : "#000",
-                bg : '#fff',
-                size : 16
-            }
         },
         tapClose : true
     }, function(ret) {
@@ -129,6 +94,8 @@
             dialogBox.close({
                 dialogName: 'alert'
             });
+        }else{
+
         }
     });
 }
