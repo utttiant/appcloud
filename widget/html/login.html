@@ -36,19 +36,7 @@
 <script src="../script/common.js"></script>
 <script type="text/javascript">
 	var dialogBox;
-	var 
-    apiready = function(){
-    	dialogBox = api.require('dialogBox');
-    	var btn = api.appId('btn');
-    	alert(btn)
-    // 	 api.addEventListener($api.byId('btn'), 'click', function() {
-
-		  //   alert('aaaa')
-
-		  // });
-    	
-    };
-    function register(){
+    var register = function(){
     	api.openFrame({
             name: 'register',
             url: 'html/register.html',
@@ -61,6 +49,15 @@
             }
         });
     }
+    apiready = function(){
+    	dialogBox = api.require('dialogBox');
+    	var appId = $api.byId('btn'); 
+    	// api.addEventListener()
+    	api.addEventListener(appId,'click', function(ret, err) {
+		    alert('已连接网络');
+		});
+    	
+    };
     function dialogBox_alert1() {
     dialogBox.alert({
         texts : {
