@@ -39,7 +39,7 @@
     var register = function(){
     	api.openFrame({
             name: 'register',
-            url: 'html/register.html',
+            url: './register.html',
             bounces: true,
             rect: {
                 x: 0,
@@ -48,14 +48,18 @@
                 h: 'auto'
             }
         });
+        api.setFrameAttr({
+            name: 'detailmore',
+            hidden: true
+        });
     }
     apiready = function(){
     	dialogBox = api.require('dialogBox');
-    	var appId = $api.byId('btn'); 
+    	// var appId = $api.byId('btn'); 
     	// api.addEventListener()
-    	api.addEventListener(appId,'click', function(ret, err) {
-		    alert('已连接网络');
-		});
+  //   	api.addEventListener(appId,'click', function(ret, err) {
+		//     alert('已连接网络');
+		// });
     	
     };
     function dialogBox_alert1() {
