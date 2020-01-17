@@ -39,9 +39,13 @@
 	var 
     apiready = function(){
     	dialogBox = api.require('dialogBox');
-    	api.addEventListener($api.byId('btn'),'click',function(ret, err){
-		    alert('当前显示frame：'+ret.name);
-		});
+    	var btn = api.appId('btn');
+    	alert(btn)
+    // 	 api.addEventListener($api.byId('btn'), 'click', function() {
+
+		  //   alert('aaaa')
+
+		  // });
     	
     };
     function register(){
