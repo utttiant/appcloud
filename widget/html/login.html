@@ -8,15 +8,15 @@
     <link rel="stylesheet" type="text/css" href="../css/api.css" />
     <link rel="stylesheet" href="../css/login.css">
     <style type="text/css">
-        html{ background-color: white; }
+       /* html{ background-color: white; }
         header{  padding: 25px 0; }
         span {
             padding: 5px 15px;
             margin: 10px;
             display: inline-block;
             background-color: #e8e8e8;
-        }
-        .hover{ opacity: .4; }
+        }*/
+        /*.hover{ opacity: .4; }*/
     </style>
 </head>
 <body>
@@ -76,7 +76,8 @@
         });
     }
     var login = function(){
-    	var user = $api.byId('user').val;
+    	var user = $api.byId('user');
+    	var val = user.val();
     	alert(user)
     }
     
