@@ -25,7 +25,7 @@
 		<div id="user">
 			<p class="userName"><input type="text" placeholder="请输入您的用户名"></p>
 			<p class="pwd" id="lastP"><input type="text" placeholder="请输入您的密码"><img src="../image/login/hide.png" alt="" class="pwdHide"></p>
-			<p class="forgetPwd">忘记密码？</p>
+			<p class="forgetPwd" tapmode="tap-active" onclick="pwd()">忘记密码？</p>
 			<button class="btn" id="btn">登录</button>
 			<p class="register"><span>还没有账号</span><span tapmode="tap-active" onclick="register()">立即注册</span></p>
 			<p class="nooLogin" >暂不登录</p>
@@ -49,18 +49,29 @@
             }
         });
         api.setFrameAttr({
-            name: 'detailmore',
+            name: 'register',
+            hidden: true
+        });
+    }
+    var pwd = function(){
+    	api.openFrame({
+            name: 'pwd',
+            url: './pwd.html',
+            bounces: true,
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 'auto'
+            }
+        });
+        api.setFrameAttr({
+            name: 'pwd',
             hidden: true
         });
     }
     apiready = function(){
     	dialogBox = api.require('dialogBox');
-    	// var appId = $api.byId('btn'); 
-    	// api.addEventListener()
-  //   	api.addEventListener(appId,'click', function(ret, err) {
-		//     alert('已连接网络');
-		// });
-    	
     };
     function dialogBox_alert1() {
     dialogBox.alert({
