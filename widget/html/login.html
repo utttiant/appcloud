@@ -26,8 +26,8 @@
 			<p class="userName"><input type="text" placeholder="请输入您的用户名" id="user"></p>
 			<p class="pwd" id="lastP"><input type="text" placeholder="请输入您的密码" id="pwd"><img src="../image/login/hide.png" alt="" class="pwdHide"></p>
 			<p class="forgetPwd" tapmode="tap-active" onclick="pwd()">忘记密码？</p>
-			<button class="btn" id="btn" tapmode="tap-active" onclick="login()">登录</button>
-			<p class="register"><span>还没有账号</span><span tapmode="tap-active" onclick="register()">立即注册</span></p>
+			<button class="btn" id="btn" tapmode onclick="login()">登录</button>
+			<p class="register"><span>还没有账号</span><span tapmode onclick="register()">立即注册</span></p>
 			<p class="nooLogin" >暂不登录</p>
 		</div>
 	</div>
@@ -40,48 +40,35 @@
 	var validator;
 	apiready = function(){
     	dialogBox = api.require('dialogBox');
-    	alert($('#user').val())
+    	fnInitUIInput()
     	// validator = api.require('validator');
     };
     var register = function(){
-    	api.openFrame({
+        api.openWin({
             name: 'register',
             url: './register.html',
-            bounces: true,
-            rect: {
-                x: 0,
-                y: 0,
-                w: 'auto',
-                h: 'auto'
+            pageParam: {
+                name: 'register'
             }
-        });
-        api.setFrameAttr({
-            name: 'register',
-            hidden: true
         });
     }
     var pwd = function(){
-    	api.openFrame({
+        api.openWin({
             name: 'pwd',
             url: './pwd.html',
-            bounces: true,
-            rect: {
-                x: 0,
-                y: 0,
-                w: 'auto',
-                h: 'auto'
+            pageParam: {
+                name: 'pwd'
             }
         });
-        api.setFrameAttr({
-            name: 'pwd',
-            hidden: true
-        });
     }
-    var login = function(){
-    	var user = $('#user').val();
-    	alert(user)
-    }
-    
+
+var login = function(){
+	var user = $api.byId('user');
+	var pwd = $api.byId('pwd');
+	var userValue = user.value;
+	var pwdValue = pwd.value;
+	alert(userValue)
+}
     function dialogBox_alert1(text) {
     dialogBox.alert({
         texts : {
