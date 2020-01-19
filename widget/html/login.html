@@ -40,7 +40,6 @@
 	var validator;
 	apiready = function(){
     	dialogBox = api.require('dialogBox');
-    	fnInitUIInput()
     	// validator = api.require('validator');
     };
     var register = function(){
@@ -62,11 +61,11 @@
         });
     }
 
-var login = function(){
+function login(){
 	var user = $api.byId('user');
 	var pwd = $api.byId('pwd');
-	var userValue = user.value;
-	var pwdValue = pwd.value;
+	var userValue = $api.val(user,'value');
+	// var pwdValue = pwd.value;
 	alert(userValue)
 }
     function dialogBox_alert1(text) {
