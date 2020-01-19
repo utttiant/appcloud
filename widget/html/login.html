@@ -23,7 +23,7 @@
 	<div id='sys-info'>
 		<p class="title">欢迎使用艾网络</p>
 		<div id="user">
-			<p class="userName"><input type="text" placeholder="请输入您的用户名" id="user"></p>
+			<p class="userName"><input type="text" placeholder="请输入您的用户名" id="userName"></p>
 			<p class="pwd" id="lastP"><input type="text" placeholder="请输入您的密码" id="pwd"><img src="../image/login/hide.png" alt="" class="pwdHide"></p>
 			<p class="forgetPwd" tapmode="tap-active" onclick="pwd()">忘记密码？</p>
 			<button class="btn" id="btn" tapmode onclick="login()">登录</button>
@@ -61,9 +61,9 @@
     }
 
 function login(){
-	var user = $api.byId('user');
+	var userName = $api.byId('userName');
 	var pwd = $api.byId('pwd');
-	var userValue = user.value;
+	var userValue = userName.value;
 	var pwdValue = pwd.value;
 	alert(userValue)
 }
