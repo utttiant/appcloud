@@ -36,9 +36,10 @@
 <script src="../script/common.js"></script>
 <script type="text/javascript">
 	var dialogBox;
-	var validator;
+	var signature;
 	apiready = function(){
     	dialogBox = api.require('dialogBox');
+    	signature = api.require('signature');
     	// validator = api.require('validator');
     };
     var register = function(){
@@ -65,7 +66,33 @@ function login(){
 	var pwd = $api.byId('pwd');
 	var userValue = userName.value;
 	var pwdValue = pwd.value;
-	alert(userValue)
+	var obj = {
+		"username": userValue,
+		// "password": hex_md5(password)
+	}
+	signature.md5({
+    	data: pwdValue
+	}, function(ret, err) {
+	    if (ret.status) {
+	    	obj.password = ret;
+	    	// obj.password = JSON.stringify(ret)
+	        alert(JSON.stringify(ret));
+	    } else {
+	        alert(JSON.stringify(err));
+	    }
+	});
+	var aa = JSON.stringify(obj);
+	api.ajax({
+	    url: 'https://cloud.utt.com.cn/auth',
+	    method: 'post',
+	    data: aa
+	}, function(ret, err) {
+	    if (ret) {
+	        alert(ret);
+	    } else {
+	        alert(ret);
+	    }
+	});
 }
     function dialogBox_alert1(text) {
     dialogBox.alert({
