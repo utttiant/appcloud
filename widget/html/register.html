@@ -23,25 +23,40 @@
 <script type="text/javascript" src="../script/api.js"></script>
 <script src="../script/common.js"></script>
 <script type="text/javascript">
-    var success = function(){
-        api.openFrame({
-            name: 'success',
-            url: './registerSuccess.html',
-            bounces: true,
-            rect: {
-                x: 0,
-                y: 0,
-                w: 'auto',
-                h: 'auto'
-            }
-        });
-        api.setFrameAttr({
-            name: 'success',
-            hidden: true
-        });
-    }
     apiready = function(){
     	
     };
+    // 获取验证码
+    function code1(){
+        var iphone = $api.byClass('iphone');
+        var val = iphone.value;
+        if(!val){
+            api.alert('手机号不能为空')
+        }
+    }
+    // 获取验证码
+    var code = $api.byClass('code');
+    code.onclick = function(){
+        code1()
+    }
+
+    // api.api.ajax({
+    //     url: 'http://192.168.1.101:3101/upLoad',
+    //     method: 'post',
+    //     data: {
+    //         values: { 
+    //             name: 'haha'
+    //         },
+    //         files: { 
+    //             file: 'fs://a.gif'
+    //         }
+    //     }
+    // },function(ret, err){
+    //     if (ret) {
+    //         alert( JSON.stringify( ret ) );
+    //     } else {
+    //         alert( JSON.stringify( err ) );
+    //     }
+    // });
 </script>
 </html>
