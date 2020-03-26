@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <!-- <link rel="stylesheet" href="../css/common.css"> -->
+    <link rel="stylesheet" href="../css/network.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        body{
+            background-color: #f6f6f6;
+        }
+        .buttons{
+        	margin-top:4.66rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>信道设置</span>
+    </div>
+    <div id="network">
+    	<div class="channel">
+			<p class="channel_title">信道设置</p>
+    	</div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../res/dataBase.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+     //    var winHeight = api.winHeight;
+     //    var main = $api.byId('homepage');
+    	// module.footer(main,winHeight)
+    };
+   var channel = $api.byClass('channel');
+    var list = [
+    	{
+    		'placeholder':'2.4G',
+    		'inputData':{
+    			"type":'select',
+    			'name':'g24Channel',
+    			'items':dataBase.g24Channel.items
+    		}
+    	},
+    	{
+    		'placeholder':'5G',
+    		'inputData':{
+    			"type":'select',
+    			'name':'g5Channel',
+    			'items':dataBase.g5Channel.items
+    		}
+    	}
+    ]
+    module.inputGroup(channel,list);
+</script>
+</html>

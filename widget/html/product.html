@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="../css/icon/iconfont.css"> -->
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>产品库</span>
+    </div>
+    <div id="homepage">
+
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        var winHeight = api.winHeight;
+        var main = $api.byId('homepage');
+    	module.footer(main,winHeight)
+    };
+    var obj = [
+	        {
+	            'name':'企业级有线路由器',
+	            'img':'../image/product/8.png',
+	            'icon':true,
+	            'func':function(){
+	                api.openWin({
+	                    name: 'register',
+	                    url: './register.html',
+	                    pageParam: {
+	                        name: 'register'
+	                    }
+	                });
+	            }
+	        },
+	        {
+	            'name':'企业级无线路由器',
+	            'img':'../image/product/7.png',
+	            'icon':true,
+	            'func':function(){
+	                api.openWin({
+	                    name: 'register',
+	                    url: './register.html',
+	                    pageParam: {
+	                        name: 'register'
+	                    }
+	                });
+	            }
+	        },
+	        {
+	            'name':'商用无线路由器',
+	            'img':'../image/product/9.png',
+	            'icon':true,
+	            'func':function(){
+	                api.openWin({
+	                    name: 'register',
+	                    url: './register.html',
+	                    pageParam: {
+	                        name: 'register'
+	                    }
+	                });
+	            }
+	        },
+	        {
+	            'name':'防火墙',
+	            'img':'../image/product/2.png',
+	            'icon':true,
+	            'func':function(){
+	                api.openWin({
+	                    name: 'register',
+	                    url: './register.html',
+	                    pageParam: {
+	                        name: 'register'
+	                    }
+	                });
+	            }
+	        },
+	        {
+	            'name':'交换机',
+	            'img':'../image/product/5.png',
+	            'icon':true,
+	            'func':function(){
+	                api.openWin({
+	                    name: 'register',
+	                    url: './register.html',
+	                    pageParam: {
+	                        name: 'register'
+	                    }
+	                });
+	            }
+	        },
+	        {
+	            'name':'智能无线',
+	            'img':'../image/product/12.png',
+	            'icon':true,
+	            'func':function(){
+	                api.openWin({
+	                    name: 'register',
+	                    url: './register.html',
+	                    pageParam: {
+	                        name: 'register'
+	                    }
+	                });
+	            }
+	        },
+	        {
+	            'name':'行业产品',
+	            'img':'../image/product/4.png',
+	            'icon':true,
+	            'func':function(){
+	                api.openWin({
+	                    name: 'register',
+	                    url: './register.html',
+	                    pageParam: {
+	                        name: 'register'
+	                    }
+	                });
+	            }
+	        },
+	        {
+	            'name':'其他',
+	            'img':'../image/product/6.png',
+	            'icon':true,
+	            'func':function(){
+	                api.openWin({
+	                    name: 'register',
+	                    url: './register.html',
+	                    pageParam: {
+	                        name: 'register'
+	                    }
+	                });
+	            }
+	        },
+	    ];
+	    var main = $api.byId('homepage');
+	    module.list(main,obj);
+    
+</script>
+</html>

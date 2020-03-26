@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/my.css">
+    <style>
+		p{
+			margin-block-start: 0;
+   			margin-block-end: 0;
+		}
+		#homepage{
+			background-color: #f6f6f6;
+		}
+		.buttons{
+			margin-top:1.36rem;
+		}
+    </style>
+    <!-- <link rel="stylesheet" href="../css/icon/iconfont.css"> -->
+</head>
+<body>
+    <div class="header">
+    	<svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+  			<use xlink:href="#iconzuo"></use>
+		</svg><span>518GB</span>
+	</div>
+	<div id="homepage">
+
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        
+    };
+ 	var obj = [
+ 		{
+ 			'name':'设备状态',
+ 			'rightText':'在线',
+ 			'color':'#0781fe'
+ 		},
+ 		{
+ 			'name':'设备型号',
+ 			'rightText':'518GP'
+ 		},
+ 		{
+ 			'name':'序列号',
+ 			'rightText':'102465686898'
+ 		},
+ 		{
+ 			'name':'软件版本',
+ 			'rightText':'nv518gpv3.1-191030'
+ 		},
+ 		{
+ 			'name':'硬件版本',
+ 			'rightText':'V2.0'
+ 		},
+ 		{
+ 			'name':'运行时长',
+ 			'rightText':'16天3小时15分'
+ 		},
+ 		{
+ 			'name':'MAC地址(LAN)',
+ 			'rightText':'DD:DD:DD:DD:DD:DD'
+ 		},
+ 		{
+ 			'name':'IP地址(WAN1)',
+ 			'rightText':'192.168.1.108'
+ 		},
+ 	]
+ 	var main = $api.byId('homepage');
+    module.list(main,obj);
+    var btn = [['远程管理'],'重启']
+    module.btns(main,btn)
+</script>
+</html>

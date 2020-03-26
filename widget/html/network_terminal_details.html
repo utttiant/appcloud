@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/my.css">
+    <style>
+		p{
+			margin-block-start: 0;
+   			margin-block-end: 0;
+		}
+		#homepage{
+			background-color: #f6f6f6;
+		}
+		.buttons{
+			margin-top:1.36rem;
+		}
+    </style>
+    <!-- <link rel="stylesheet" href="../css/icon/iconfont.css"> -->
+</head>
+<body>
+    <div class="header">
+    	<svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+  			<use xlink:href="#iconzuo"></use>
+		</svg><span>终端详情</span>
+	</div>
+	<div id="homepage">
+
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        
+    };
+ 	var obj = [
+ 		{
+ 			'name':'mac地址',
+ 			'rightText':'dd:dd:dd:dd:dd:dd'
+ 		},
+ 		{
+ 			'name':'连接ssid',
+ 			'rightText':'utt-2.4g'
+ 		},
+ 		{
+ 			'name':'ip地址',
+ 			'rightText':'192.168.1.1'
+ 		},
+ 		{
+ 			'name':'信号',
+ 			'rightText':'-30dB'
+ 		},
+ 		{
+ 			'name':'协商速率',
+ 			'rightText':'50M'
+ 		},
+ 		{
+ 			'name':'连接时长',
+ 			'rightText':'16天3小时15分'
+ 		},
+ 		{
+ 			'name':'连入设备',
+ 			'rightText':'风暴厅'
+ 		}
+ 	]
+ 	var main = $api.byId('homepage');
+    module.list(main,obj);
+</script>
+</html>

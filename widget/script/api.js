@@ -113,6 +113,9 @@
     u.byId = function(id){
         return document.getElementById(id);
     };
+    u.byClass = function(id){
+        return document.getElementsByClassName(id)[0];
+    };
     u.first = function(el, selector){
         if(arguments.length === 1){
             if(!u.isElement(el)){
@@ -580,7 +583,14 @@
             }
         );
     };
-
+    u.getSibings = function(elem){
+        var a = [];
+        var b = elem.parentNode.children;
+        for(var i =0;i<b.length;i++) {
+            if(b[i] !== elem) a.push(b[i]);
+        }
+        return a
+    };
 /*end*/
     
 

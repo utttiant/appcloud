@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/my.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="../css/icon/iconfont.css"> -->
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>我的</span>
+    </div>
+    <div class="top">
+        <span class="my"></span>
+        <div id="user"></div>
+    </div>
+    <div id="homepage">
+
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+var dialogBox;
+    apiready = function(){
+        dialogBox = api.require('dialogBox');
+         var winHeight = api.winHeight;
+        var main = $api.byId('homepage');
+        module.footer(main,winHeight)
+    };
+    var user = $api.byId('user');
+    user.innerHTML = '13800000888'
+    var obj = [
+        {
+            'name':'在线客服',
+            'img':'../image/my/cts.png',
+            'icon':true
+        },
+        {
+            'name':'关于我们',
+            'img':'../image/my/aboutUs.png',
+            'icon':true,
+            'func':function(){
+                api.openWin({
+                    name: 'aboutUs',
+                    url: './aboutUs.html',
+                    pageParam: {
+                        name: 'aboutUs'
+                    }
+                });
+            }
+        },
+        {
+            'name':'账户设置',
+            'img':'../image/my/ats.png',
+            'icon':true,
+            func:function(){
+                // account_settings.html
+                api.openWin({
+                    name: 'account_settings',
+                    url: './account_settings.html',
+                    pageParam: {
+                        name: 'account_settings'
+                    }
+                });
+            }
+        },
+        {
+            'name':'退出登录',
+            'img':'../image/my/Logout.png',
+            'icon':true,
+            func:function(){
+                dialogBox.alert({
+                    texts : {
+                        title : '提示',
+                        content : '确定要退出登录？',
+                        leftBtnTitle : '否',
+                        rightBtnTitle : '是'
+                    },
+                    styles:module.dialogBox(),
+                    tapClose : true
+                }, function(ret) {
+                    if (ret.eventType == 'left') {
+                        dialogBox.close({
+                            dialogName: 'alert'
+                        });
+                    }else{
+                        login(); 
+                    }
+                });
+            }
+        },
+    ]
+    var main = $api.byId('homepage');
+    module.list(main,obj);
+    function login(){
+        user.innerHTML = '立即登录';
+        user.onclick = function(){
+            api.openWin({
+                name: 'login',
+                url: './login.html',
+                pageParam: {
+                    name: 'login'
+                }
+            });
+        }
+        var main = $api.byId('homepage');
+        $api.remove(main);
+        var box = document.getElementsByTagName('body')[0];
+        $api.append(box,'<div id="homepage"></div>');
+        var obj = [
+            {
+                'name':'在线客服',
+                'img':'../image/my/cts.png',
+                'icon':true
+            },
+            {
+                'name':'关于我们',
+                'img':'../image/my/aboutUs.png',
+                'icon':true,
+                'func':function(){
+                    api.openWin({
+                        name: 'aboutUs',
+                        url: './aboutUs.html',
+                        pageParam: {
+                            name: 'aboutUs'
+                        }
+                    });
+                }
+            }
+        ]
+        var main = $api.byId('homepage');
+        module.list(main,obj);
+        dialogBox.close({
+            dialogName: 'alert'
+        });
+    }
+</script>
+</html>

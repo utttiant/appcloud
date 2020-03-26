@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/network.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        body{
+            background-color: #f6f6f6;
+        }
+        .buttons{
+        	margin-top:2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>无线设置</span>
+    </div>
+    <div id="network">
+    	<div class="network_wirl"></div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+     //    var winHeight = api.winHeight;
+     //    var main = $api.byId('homepage');
+    	// module.footer(main,winHeight)
+    };
+    var network = $api.byClass('network_wirl');
+    var list = [
+    	{
+    		'title':'',
+    		'datas':[
+    			{
+		    		'name':'双频合一',
+					'type':'switch',
+					'cla':'encryption',
+					'items':'',
+					'switch':0
+
+		    	},
+    		]
+    	},
+    	{
+    		'title':'2.4G频段',
+    		'datas':[
+    			{
+		    		'name':'无线名称',
+					'type':'text',
+		            'cla':'24gName',
+					'items':'',
+					'placeholder':'请输入无线名称'
+
+		    	},
+    			{
+		    		'name':'不加密',
+					'type':'switch',
+					'cla':'24gEncryption',
+					'items':'',
+					'switch':0
+
+		    	},
+		    	{
+		    		'name':'无线密码',
+					'type':'text',
+		            'cla':'24gPwd',
+					'items':'',
+					'placeholder':'请输入无线密码'
+
+		    	}
+    		]
+    	},
+    	{
+    		'title':'5G频段',
+    		'datas':[
+    			{
+		    		'name':'无线名称',
+					'type':'text',
+		            'cla':'5gName',
+					'items':'',
+					'placeholder':'请输入无线名称'
+
+		    	},
+    			{
+		    		'name':'不加密',
+					'type':'switch',
+					'cla':'5gEncryption',
+					'items':'',
+					'switch':1
+
+		    	}
+    		]
+    	}
+    ];
+    var box = network;
+    for(var i in list){
+    	if(list[i].title){
+    		var html = '<div id="'+i+'"><p name="wireless_titles">'+list[i].title+'</p></div>'
+    		$api.append(network,html)
+    		box = $api.byId(i);
+    	}
+    	table(box,list[i].datas);
+    }
+    function table(box,datas){
+    	module.table(box,datas);
+    }
+    
+    var btn = ['确定'];
+    module.btns(network,btn)
+</script>
+</html>

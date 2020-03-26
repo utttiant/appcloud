@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/service.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="../css/icon/iconfont.css"> -->
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>服务</span>
+    </div>
+    <div id="main">
+		<ul>
+
+		</ul>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        var winHeight = api.winHeight;
+        var main = $api.byId('main');
+    	module.footer(main,winHeight)
+    };
+    var list = [
+    	{
+    		'name':'智能客服',
+    		'img':'../image/service/1.png',
+    		func:function(){
+    			alert(1)
+    		}
+    	},
+    	{
+    		'name':'保修查询',
+    		'img':'../image/service/2.png',
+    		func:function(){
+    			alert(1)
+    		}
+    	},
+    	{
+    		'name':'知识库',
+    		'img':'../image/service/3.png',
+    		func:function(){
+    			alert(1)
+    		}
+    	},
+    	{
+    		'name':'解决方案',
+    		'img':'../image/service/4.png',
+    		func:function(){
+    			alert(1)
+    		}
+    	},
+    	{
+    		'name':'进销商信息',
+    		'img':'../image/service/5.png',
+    		func:function(){
+    			alert(1)
+    		}
+    	},
+    	{
+    		'name':'新闻中心',
+    		'img':'../image/service/6.png',
+    		func:function(){
+    			alert(1)
+    		}
+    	},
+    	{
+    		'name':'Ping测试',
+    		'img':'../image/service/7.png',
+    		func:function(){
+    			api.openWin({
+                    name: 'ping',
+                    url: './ping.html',
+                    pageParam: {
+                        name: 'ping'
+                    }
+                });
+    		}
+    	}
+    ]
+    var main = $api.byId('main').children[0];
+    for(var i in list){
+    	var html = '';
+    	html += '<li><p><img src="'+list[i].img+'"></p><p>'+list[i].name+'</p></li>';
+    	listClick(main,html,i,list[i].func)
+    }
+    function listClick(main,html,index,func){
+    	$api.append(main,html);
+    	main.children[index].onclick = function(){
+    		if(func){
+    			func();
+    		}
+    	}
+    }
+</script>
+</html>

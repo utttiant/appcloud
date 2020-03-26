@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/configur.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        body{
+            background-color: #f6f6f6;
+        }
+        .buttons{
+        	margin-top:2.04rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>连接提示</span>
+    </div>
+    <div id="configure">
+    	<div class="successImg"></div>
+    	<p class="success_title">恭喜您，配置成功！</p>
+    	<div class="successTip">
+    		<ul></ul>
+    	</div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+     //    var winHeight = api.winHeight;
+     //    var main = $api.byId('homepage');
+    	// module.footer(main,winHeight)
+    };
+   	var arr = ['您的无线名称为','无线密码为','设备管理密码为'];
+   	var datas = ['XXX','123456','123456'];
+   	var ul = document.getElementsByTagName('ul')[0];
+   	var html = "";
+   	for(var i in arr){
+   		html += '<li><span>'+arr[i]+'</span><span>'+datas[i]+'</span></li>'
+   	}
+   	$api.append(ul,html);
+   	var box = $api.byId('configure')
+   	var btns = ['管理网络'];
+   	module.btns(box,btns)
+</script>
+</html>
