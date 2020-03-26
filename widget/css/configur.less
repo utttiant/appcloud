@@ -1,0 +1,155 @@
+@charset "utf-8";
+@import "common";
+#configure{
+	.internet_titles{
+		ul{
+			display: table;
+			width: 4.93rem;
+			margin: 0.59rem auto 0.52rem;
+		}
+		li{
+			float: left;
+			width: 32%;
+			height: 0.65rem;
+			text-align: center;
+			line-height: 0.65rem;
+			font-size: 0.3rem;
+			color:#7d7d7d;
+			border-right: 1px solid #d2d2d2;
+			background-color: #fff;
+			
+		}
+		li:nth-child(1){
+			border-top-left-radius:0.1rem;
+			border-bottom-left-radius: 0.1rem;
+		}
+		li:last-child{
+			border-right: none;
+			border-top-right-radius: 0.1rem;
+			border-bottom-right-radius: 0.1rem;
+		}
+		[name=color]{
+			background-color: #0781fe;
+			color:#fff;
+		}
+	}
+	.internet_tip{
+		text-align: center;
+		font-size: 0.3rem;
+		color:#7d7d7d;
+		padding-bottom: 0.6rem;
+	}
+	#inputGroup{
+		background-color: #f6f6f6;
+		padding:0 0.8rem;
+		/*input{
+			border-bottom: 1px solid #d2d2d2;
+		}
+		p{
+			border:none;
+		}*/
+		p:nth-child(1){
+			background:url(../image/configur/user.png)no-repeat center left;
+			background-size: 0.35rem 0.42rem;
+		}
+		p:nth-child(2){
+			background:url(../image/configur/pwd.png)no-repeat center left;
+			background-size: 0.35rem 0.42rem;
+		}
+	}
+	.DynamicIP_title{
+		padding-top:2.69rem;
+		text-align: center;
+		font-size: 0.3rem;
+		color:#7d7d7d;
+		padding-bottom: 0.39rem;
+	}
+	.DynamicIP_img{
+		height: 1.62rem;
+		background:url(../image/configur/1.jpg)no-repeat center;
+		background-size: 1.62rem 1.62rem;
+	}
+	.StaticIP{
+		font-size: 0.3rem;
+		color:#393939;
+		border-bottom:1px solid #d2d2d2;
+		margin-left:0.21rem;
+		padding-left: 0.35rem;
+		p:nth-child(1){
+			padding-top: 0.23rem;
+		}
+		p:nth-child(2){
+			padding-bottom: 0.23rem;
+		}
+		input{
+			display: inline-block;
+			width: 100%;
+			min-height: 0.35rem;
+			font-size: 0.26rem;
+			color:#b8b8b8;
+
+		}
+	}
+	.StaticIP:last-child{
+		border:none;
+	}
+	/*无线设置*/
+	.configure_titles{
+		font-size: 0.3rem;
+		color:#393939;
+		padding:0.35rem;
+	}
+	.configure_list{
+		span{
+			font-size: 0.3rem;
+			color:#393939;
+		}
+		input{
+			font-size: 0.3rem;
+		}
+	}
+	.successImg{
+		height: 1.87rem;
+		margin-top: 0.52rem;
+		margin-bottom: 0.29rem;
+		background:url(../image/configur/success.png)no-repeat center;
+		background-size: 1.86rem 1.86rem;
+	}
+	.success_title{
+		font-size: 0.36rem;
+		color:#000;
+		font-weight: both;
+		text-align: center;
+		padding-bottom: 0.54rem;
+	}
+	.successTip{
+		width: 5.53rem;
+		/*height: 2.15rem;*/
+		border:1px solid #d2d2d2;
+		margin:0 auto;
+		padding-top: 0.33rem;
+		background-color: #fff;
+		border-radius: 0.1rem;
+		li:before{
+			content:".";
+			color:#0781fe;
+			position:relative;
+			left: 0;
+    		bottom: 0.1rem;
+		};
+		li{
+			padding-left: 0.38rem;
+			padding-bottom: 0.33rem;
+			font-size:0.3rem;
+			span:first-child{
+				min-width:2.34rem;
+				padding-right: 0.73rem;
+				color:#0781fe;
+				padding-left: 0.17rem;
+			}
+			span:last-child{
+				color:#393939;
+			}
+		}
+	}
+}

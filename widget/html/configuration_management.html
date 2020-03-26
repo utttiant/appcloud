@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/configur.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        body{
+            background-color: #f6f6f6;
+        }
+        .buttons{
+        	margin-top:4.66rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>网络安全</span>
+    </div>
+    <div id="config">
+		<p class="list_titles">请修改您设备的管理密码</p>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+     //    var winHeight = api.winHeight;
+     //    var main = $api.byId('homepage');
+    	// module.footer(main,winHeight)
+    };
+    var network = $api.byId('config')
+    var list = [
+    	{
+    		'placeholder':'用户名',
+    		'inputData':{
+    			"type":'text',
+    			'name':'user',
+    			'items':'admin',
+    			'tip':true,
+    			'yz':''
+    		}
+    	},
+    	{
+    		'placeholder':'密码',
+    		'inputData':{
+    			"type":'pwd',
+    			'name':'pwd',
+    			'items':'111111',
+    			'encryption':false
+    		}
+    	}
+    ]
+    module.inputGroup(network,list);
+    var btns = ['完成'];
+    var body = document.getElementsByTagName('body')[0];
+    module.btns(body,btns)
+</script>
+</html>

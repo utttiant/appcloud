@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <!-- <link rel="stylesheet" href="../css/common.css"> -->
+    <link rel="stylesheet" href="../css/network.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        body{
+            background-color: #f6f6f6;
+        }
+        .buttons{
+        	margin-top:4.66rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>设备管理</span>
+    </div>
+    <div id="network">
+    	<div class="device">
+			<div class="title">
+				<p class="tit color" num="1">在线</p>
+				<p class="tit" num="0">离线</p>
+			</div>
+    	</div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../res/dataBase.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+     //    var winHeight = api.winHeight;
+     //    var main = $api.byId('homepage');
+    	// module.footer(main,winHeight)
+    };
+    var title = $api.byClass('title');
+    var tit = document.getElementsByClassName('tit');
+    for(var i=0;i<tit.length;i++){
+    	tit[i].onclick = function(e){
+    		var num = $api.attr(this,'num');
+    		
+    		var Sibings = $api.getSibings(this);
+    		$api.attr(Sibings[0],'flg','0')
+    		// console.log()
+    		$api.addCls(this,'color');
+    		for(var i in Sibings){
+    			$api.removeCls(Sibings[i],'color')
+    		}
+    		list(num)
+    	}
+    }
+    var device = $api.byClass('device');
+    list(1)
+   function list(num){
+   	var homepage = $api.byId('homepage');
+   	$api.remove(homepage);
+   	$api.append(device,'<div id="homepage"></div>');
+   	var homepage = $api.byId('homepage');
+   	var img = num == 1?'../image/mynetwork/2_11.png':'../image/mynetwork/2_17.png'
+    var list = [
+    	{
+    		'img':img,
+ 			'name':'风暴厅',
+ 			'subRightText':'192.168.1.110',
+ 			'subtitle':['600N','信号:1/49'],
+ 			'icon':true,
+ 			func:function(e){
+ 				console.log(1)
+ 			}
+ 		},
+ 		{
+    		'img':img,
+ 			'name':'风暴厅',
+ 			'subRightText':'192.168.1.110',
+ 			'subtitle':['utt-2.4G','信号:40dB'],
+ 			'icon':true,
+ 			func:function(e){
+ 				console.log(2)
+ 			}
+ 		},
+ 		{
+    		'img':img,
+ 			'name':'风暴厅',
+ 			'subRightText':'192.168.1.110',
+ 			'subtitle':['utt-2.4G','信号:40dB'],
+ 			'icon':true,
+ 			func:function(e){
+ 				console.log(3)
+ 			}
+ 		},
+    ]
+     module.list(homepage,list);
+   }
+   
+   
+</script>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/network.css">
+    <style>
+    html{
+        height: 100%;
+        /*background-color: #fff;*/
+    }
+    #network{
+        background-color: #f6f6f6;
+    }
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        #homepage .list>p{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>配置</span>
+    </div>
+    <div id="network">
+        
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+var dialogBox;
+    apiready = function(){
+    dialogBox = api.require('dialogBox');
+     var winHeight = api.winHeight;
+        var main = $api.byId('network');
+        var list = [
+            {
+                'name':'状态',
+                'img':'../image/mynetwork/status.png',
+                'class':'col1',
+                func:function(){
+                    api.openWin({
+                        name: 'network_status',
+                        url: './network_status.html',
+                        pageParam: {
+                            name: 'network_status'
+                        }
+                    });
+                }
+            },
+            {
+                'name':'配置',
+                'img':'../image/mynetwork/set.png',
+                'class':'col',
+                func:function(){
+                    // network_ collocation.html
+                       api.openWin({
+                            name: 'collocation',
+                            url: './network_collocation.html',
+                            pageParam: {
+                                name: 'collocation'
+                            }
+                        });         
+                }
+            }
+        ]
+        module.footer(main,winHeight,list)
+    };
+    var list = [
+        {
+            'title':'配置',
+            'datas':[
+                        {
+                            'name':'无线设置',
+                            'img':'../image/mynetwork/w.png',
+                            'icon':true,
+                            func:function(){
+                                api.openWin({
+                                    name: 'network_terminal_details',
+                                    url: './network_terminal_details.html',
+                                    pageParam: {
+                                        name: 'network_terminal_details'
+                                    }
+                                });
+                            }
+                        },
+                        {
+                            'name':'上网设置',
+                            'img':'../image/mynetwork/e.png',
+                            'icon':true
+                        }
+                    ]
+        },
+        {
+            'title':'运维',
+            'datas':[
+                        {
+                            'name':'整网重启',
+                            'img':'../image/mynetwork/restart.png',
+                            'icon':true,
+                            func:function(e){
+                                dialogBox.alert({
+                                    texts : {
+                                        title : '提示',
+                                        content : '整网重启需要3-5分钟，期间所有设备均会断开连接，再次查看网络详情前请确认WiFi已重新连接。确认执行该操作？',
+                                        leftBtnTitle : '否',
+                                        rightBtnTitle : '是'
+                                    },
+                                    styles:module.dialogBox(),
+                                    tapClose : true
+                                }, function(ret) {
+                                    if (ret.eventType == 'left') {
+                                        dialogBox.close({
+                                            dialogName: 'alert'
+                                        });
+                                    }else{
+                                        login(); 
+                                    }
+                                });
+                            }
+                        },
+                        {
+                            'name':'软件升级',
+                            'img':'../image/mynetwork/upgrade.png',
+                            'icon':true,
+                            func:function(){
+                                api.openWin({
+                                    name: 'Software_upgrade',
+                                    url: './Software_upgrade.html',
+                                    pageParam: {
+                                        name: 'Software_upgrade'
+                                    }
+                                });
+                            }
+                        }
+                    ]
+        },
+        {
+            'title':'网络设置',
+            'datas':[
+                        {
+                            'name':'设备管理账户',
+                            'img':'../image/mynetwork/device_user.png',
+                            'icon':true
+                        },
+                        {
+                            'name':'网络名称',
+                            'img':'../image/mynetwork/Network_name.png',
+                            'icon':true
+                        }
+                    ]
+        }
+    ]
+    var network = $api.byId('network');
+    
+    for(var i in list){
+        var html = '<div class="network_configure"><p class="configure_title">'+list[i].title+'</p><div id="homepage"></div></div>'
+        $api.append(network,html);
+        var box = document.getElementsByClassName('network_configure')[i];
+        var box1 = box.children[1];
+        setList(box1,list[i].datas)
+    }
+    function setList(box,list){
+       module.list(box,list) 
+    }
+    
+</script>
+</html>

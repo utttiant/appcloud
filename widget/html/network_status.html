@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/network.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        body{
+            background-color: #f6f6f6;
+        }
+        .buttons{
+        	margin-top:4.66rem;
+        }
+        .statusT{
+            margin-top: 0!important;
+        }
+        .networkTip{
+            display: table;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>状态</span>
+    </div>
+    <div id="network">
+        <div class="networkStatus">
+            <div class="networkTip"></div>
+			<div class="statusT"></div>
+			<div class="statusRout"></div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        var winHeight = api.winHeight;
+        var main = $api.byId('network');
+        var list = [
+        	{
+				'name':'状态',
+				'img':'../image/mynetwork/status.png',
+                'class':'col',
+				func:function(){
+					api.openWin({
+                        name: 'network_status',
+                        url: './network_status.html',
+                        pageParam: {
+                            name: 'network_status'
+                        }
+                    });
+				}
+			},
+			{
+				'name':'配置',
+				'img':'../image/mynetwork/set.png',
+                'class':'col1',
+				func:function(){
+					// network_ collocation.html
+                       api.openWin({
+                            name: 'collocation',
+                            url: './network_collocation.html',
+                            pageParam: {
+                                name: 'collocation'
+                            }
+                        });         
+				}
+			}
+        ]
+    	module.footer(main,winHeight,list)
+    };
+    var networkTip = $api.byClass('networkTip');
+    var tipArr = {
+        'ararm':{
+            'name':'告警',
+            'num':'1',
+            'status':0
+        },
+        'notice':{
+            'name':'告警',
+            'num':'1',
+            'status':1
+        }
+    }
+    var tipText = '';
+    for(var g in tipArr){
+        tipText += '<p><span name="'+tipArr[g].status+'">'+tipArr[g].name+'</span>'+
+                        '<span class="alarmNews">'+tipArr[g].num+'</span>'
+                    '</p>'
+    }
+    $api.append(networkTip,tipText);
+    // list列表数据
+    var arr = [
+           {
+            'img':'../image/mynetwork/2_07.png',
+            'title':'运行时长',
+            'time':['26天0小时'],
+            'uid':0,
+            func:function(){
+                console.log(0)
+                    // api.openWin({
+                    //     name: 'network_status',
+                    //     url: './network_status.html',
+                    //     pageParam: {
+                    //         name: 'network_status'
+                    //     }
+                    // });
+            }
+        },
+        {
+            'img':'../image/mynetwork/2_09.png',
+            'title':'无线终端',
+            'time':['20/2'],
+            'uid':1,
+            func:function(){
+                api.openWin({
+                    name: 'wireless',
+                    url: './network_wireless.html',
+                    pageParam: {
+                        name: 'network_wireless'
+                    }
+                });
+            }
+        },
+        {
+            'img':'../image/mynetwork/2_05.png',
+            'title':'设备名称',
+            'time':['518GB','10/1'],
+            'status':1,
+            'uid':2,
+            func:function(){
+                api.openWin({
+                    name: 'network_device',
+                    url: './network_device.html',
+                    pageParam: {
+                        name: 'network_device'
+                    }
+                });
+            }
+        },
+        {
+            'img':'../image/mynetwork/2_11.png',
+            'title':'设备名称',
+            'time':['518GB','10/1'],
+            'status':1,
+            'uid':3,
+            func:function(){
+                api.openWin({
+                    name: 'network_device',
+                    url: './network_device.html',
+                    pageParam: {
+                        name: 'network_device'
+                    }
+                });
+            }
+        },
+        {
+            'img':'../image/mynetwork/2_11.png',
+            'title':'二楼卧室',
+            'time':['518GB','10/1'],
+            'status':1,
+            'uid':4,
+            func:function(){
+                console.log(0)
+                api.openWin({
+                    name: 'network_device',
+                    url: './network_device.html',
+                    pageParam: {
+                        name: 'network_device'
+                    }
+                });
+            }
+        },
+        {
+            'img':'../image/mynetwork/2_17.png',
+            'title':'二楼卧室',
+            'time':['518GB','10/1'],
+            'status':0,
+            'uid':5,
+            func:function(){
+                console.log(0)
+                api.openWin({
+                    name: 'network_device',
+                    url: './network_device.html',
+                    pageParam: {
+                        name: 'network_device'
+                    }
+                });
+            }
+        }
+
+    ]
+    // 顶部告警信息跳转事件
+    networkTip.onclick = function(){
+        api.openWin({
+                name: 'Alarm',
+                url: './Alarm.html',
+                pageParam: {
+                    name: 'Alarm'
+                }
+            });
+    }
+    
+    var statusT = $api.byClass('statusT');
+    var statusTList = [arr[0],arr[1]]
+    var list1 = statusModul(statusTList);
+    $api.append(statusT,list1);
+    var statusRoutList = [
+    	{
+    		'name':'路由器(1/1)',
+    		'class':'router',
+    		'datas':[arr[2]]
+    	},
+    	{
+    		'name':'AP(2/3)',
+    		'class':'ap',
+    		'img':'../image/mynetwork/select.png',
+    		'datas':[arr[3],arr[4],arr[5]]
+    	}
+    ];
+    var statusRout = $api.byClass('statusRout');
+    // 获取代码
+    var list2 = statusRoutModul(statusRoutList);
+    // 页面填充
+    $api.append(statusRout,list2);
+    var statusL = document.getElementsByClassName('statusL');
+    // 列表点击跳转事件
+    for(var i=0;i<arr.length;i++){
+        statusL[i].onclick = function(){
+            var uid = $api.attr(this,'uid');
+            arr[uid].func()
+        }
+    }
+    // 
+    function statusRoutModul(list){
+    	var html = '';
+    	for(var i in list){
+    		html += '<div class="'+list[i].class+'">'+
+    					'<p class="routerT"><span>'+list[i].name+'</span>'
+    		if(list[i].img){
+    			html += '<img src="'+list[i].img+'"></p>';
+    		}
+    					
+    		html += '<div class="routerM">';
+    		html += statusModul(list[i].datas);
+    		html += '</div></div>'
+    	}
+    	return html
+    }
+    // 公共部分
+    function statusModul(list){
+    	var html = '';
+    	for(var i in list){
+    		html += '<div class="statusL" uid="'+list[i].uid+'">'+
+    					'<img src="'+list[i].img+'" name="img">'+
+    					'<p name="title"><span>'+list[i].title+'</span>'
+    		if(list[i].status){
+    			html += '<img src="../image/mynetwork/Online.png"></p>'
+    		}else if(list[i].status === 0){
+    			html += '<img src="../image/mynetwork/Offline.png"></p>'
+    		}
+    		var time = list[i].time;
+    		html += '<p name="time">'
+    			for(var j in time){
+    				html += '<span >'+time[j]+'</span>'
+    			}
+    		
+    		
+    		html += '</p></div>'
+    	}
+    	return html
+    }
+</script>
+</html>

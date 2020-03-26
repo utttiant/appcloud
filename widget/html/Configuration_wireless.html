@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/configur.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        body{
+            background-color: #f6f6f6;
+        }
+        .buttons{
+        	margin-top:4.66rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>无线设置</span>
+    </div>
+    <div id="configure">
+        <div class="configure_titles">请设置您的无线名称和密码</div>
+        <div class="configure_list">
+
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+     //    var winHeight = api.winHeight;
+     //    var main = $api.byId('homepage');
+    	// module.footer(main,winHeight)
+    };
+    var obj = [
+    	{
+    		'name':'WiFi名称',
+			'type':'text',
+            'cla':'WiFi',
+			'items':'',
+			'placeholder':'请输入无线名称'
+
+    	},
+    	{
+    		'name':'不加密',
+			'type':'switch',
+            'cla':'encryption',
+			'items':'',
+			'switch':1
+
+    	},
+    	{
+    		'name':'无线密码',
+			'type':'text',
+            'cla':'pwd',
+			'items':'',
+			'placeholder':'请输入无线密码'
+
+    	}
+    ]
+    var box = $api.byClass('configure_list')
+    module.table(box,obj);
+    var btn = ['下一步'];
+    module.btns(box,btn)
+</script>
+</html>

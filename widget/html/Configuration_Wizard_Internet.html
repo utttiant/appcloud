@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/configur.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        body{
+            background-color: #f6f6f6;
+        }
+        .buttons{
+        	margin-top:4.66rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>上网方式</span>
+    </div>
+    <div id="configure">
+        <div class="internet">
+			<div class="internet_titles">
+				<ul>
+					<li class="uli" name="color">宽带拨号</li>
+					<li class="uli">动态IP</li>
+					<li class="uli">静态IP</li>
+				</ul>
+			</div>
+			
+			<div class="internet_table">
+			</div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+	var uIndex = 0;
+    apiready = function(){
+     //    var winHeight = api.winHeight;
+     //    var main = $api.byId('homepage');
+    	// module.footer(main,winHeight)
+    };
+    var uli = document.getElementsByClassName('uli');
+    for(var i=0;i<uli.length;i++){
+    	var ind = i;
+    	uli[ind].onclick = function(e){
+    		for(var j=0;j<uli.length;j++){
+    			$api.removeAttr(uli[j],'name')
+    		}
+    		$api.attr(this,'name','color')
+    		func.display(e)
+    	}
+    }
+    function main(){
+
+    }
+    main.prototype.display = function(e){
+    	var that = this;
+    	var html = e.path[0].innerHTML;
+    	// var internet = $api.byClass('internet_table');
+    	var internet_table = $api.byClass('internet_table');
+    	$api.remove(internet_table);
+    	var internet_titles = $api.byClass('internet_titles');
+    	$api.after(internet_titles,'<div class="internet_table"></div>')
+    	// internet.removeChild(internet);
+    	if(html == '宽带拨号'){
+    		uIndex = 0
+    		that.broadband();
+    	}
+    	if(html == '动态IP'){
+    		uIndex = 1
+    		that.DynamicIP()
+    	}
+    	if(html == '静态IP'){
+    		uIndex = 2
+    		that.StaticIP()
+    	}
+    }
+    // 宽带拨号
+    main.prototype.broadband = function(){
+    	var box1 = $api.byClass('internet_table');
+    	$api.append(box1,'<p class="internet_tip">请输入宽带运营商提供的上网账号</p>');
+    	var internet = $api.byClass('internet_table');
+	    var list = [
+	    	{
+	    		'placeholder':'用户名',
+	    		'inputData':{
+	    			"type":'text',
+	    			'name':'user',
+	    			'items':'',
+	    			'tip':true,
+	    			'yz':''
+	    		}
+	    	},
+	    	{
+	    		'placeholder':'密码',
+	    		'inputData':{
+	    			"type":'pwd',
+	    			'name':'pwd',
+	    			'items':'',
+	    			'encryption':true
+	    		}
+	    	}
+	    ]
+	    module.inputGroup(internet,list);
+	    
+    }
+    // 动态IP
+    main.prototype.DynamicIP = function(box,html){
+    	var box1 = $api.byClass('internet_table');
+    	$api.append(box1,'<p class="DynamicIP_title">当前上网方式无需配置</p><p class="DynamicIP_img"></p>');
+    	var btns = $api.byClass('buttons');
+    	btns.style.marginTop = '2.51rem';
+    }
+    // 静态IP
+    main.prototype.StaticIP = function(box,html){
+    	var box1 = $api.byClass('internet_table');
+    	$api.append(box1,'<p class="internet_tip">请输入您的固定IP信息</p>');
+    	var list = ['IP地址','子网掩码','默认网关','主DNS服务器','备DNS服务器']
+    	var html = '';
+    	for(var i in list){
+    		html += '<div class="StaticIP"><p>'+list[i]+'</p><p><input type="text" placeholder="0.0.0.0"></p></div>'
+    	}
+    	$api.append(box1,html);
+    	var btns = $api.byClass('buttons');
+    	btns.style.marginTop = '1rem';
+    }
+    var func = new main();
+    func.broadband()
+    var btns = ['下一步'];
+    var btnBox = $api.byClass('internet');
+    module.btns(btnBox,btns)
+</script>
+</html>

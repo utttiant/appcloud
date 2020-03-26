@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/soft.css">
+    <style>
+		p{
+			margin-block-start: 0;
+   			margin-block-end: 0;
+		}
+		.buttons{
+			margin-top:1.36rem;
+		}
+    </style>
+    <!-- <link rel="stylesheet" href="../css/icon/iconfont.css"> -->
+</head>
+<body>
+    <div class="header">
+    	<svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+  			<use xlink:href="#iconzuo"></use>
+		</svg><span>软件升级</span>
+	</div>
+	<div id="soft">
+		<div class="list_titles">共2台待升级设备</div>
+		<div class="softList">
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        
+    };
+    var list = [
+    	{
+    		'name':1,
+    		'leftText':'奋斗厅',
+    		'rightText':'AP 600N',
+    		'current':'WA700Nsetv3.1.1-191030版本',
+    		'now':'WA700Nsetv3.1.1-191030版本',
+    		'ico':'../image/mynetwork/upgrade.png'
+    	},
+    	{
+    		'name':2,
+    		'leftText':'奋斗厅',
+    		'rightText':'AP 600N',
+    		'current':'WA700Nsetv3.1.1-191030版本',
+    		'now':'WA700Nsetv3.1.1-191030版本',
+    		'ico':'../image/mynetwork/upgrade.png'
+    	}
+    ];
+ 	var softList = $api.byClass('softList');
+ 	var text = '';
+ 	for(var i in list){
+ 		text += '<div><div name="'+list[i].name+'">'+
+ 					'<p>'+
+ 						'<span>'+list[i].leftText+'</span>'+
+ 						'<span>'+list[i].rightText+'</span>'+
+ 					'</p>'+
+ 					'<p>当前版本：'+list[i].current+'</p>'+
+ 					'<p>最新版本：'+list[i].now+'</p>'
+ 				
+ 		if(list[i].ico){
+ 			text += '<img src="'+list[i].ico+'" class="soft">'
+ 		}
+ 		text += '</div></div>'
+ 	}
+ 	$api.append(softList,text);
+ 	var soft = document.getElementsByClassName('soft');
+ 	for(var j=0;j<soft.length;j++){
+ 		soft[j].onclick = function(){
+ 			var that = this;
+ 			softClick(that)
+ 		}
+ 	}
+ 	function softClick(e){
+ 		var datas = softAjax(e);
+ 		var box = e.parentNode;
+ 		var p = e.parentNode.children[2];
+ 		if(datas){
+ 			p.innerHTML = '升级成功';
+ 		}else{
+ 			p.innerHTML = '升级失败';
+ 			$api.after(p,'<p>软件下载超时</p>')
+ 		}
+ 		$api.byClass('list_titles').innerHTML = '升级结束'
+ 		// this.style.display = 'none';
+ 	}
+ 	function softAjax(e){
+ 		// 测试数据
+ 		var par = $api.attr(e.parentNode,'name');
+ 		if(par == 1){
+ 			return true
+ 		}else{
+ 			return false
+ 		}
+ 	}
+</script>
+</html>

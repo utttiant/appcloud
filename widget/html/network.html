@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/network.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        body{
+            background-color: #f6f6f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>我的网络</span>
+    </div>
+    <div id="network">
+        <div id="myNetwork">
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        var winHeight = api.winHeight;
+        var main = $api.byId('network');
+    	module.footer(main,winHeight,false,1)
+    };
+    var list = [
+        {
+            'leftImg':'../image/mynetwork/1.jpg',
+            'leftText':'本地',
+            'title':'网络01',
+            'status':1,
+            'time':'2019-11-11 11:11:11',
+            'button':['0.1/02','05/05','02/05','02/05'],
+            'new':true
+        },
+        {
+            'leftImg':'../image/mynetwork/2.jpg',
+            'leftText':'远程',
+            'title':'网络02',
+            'status':0,
+            'time':'2019-11-11 11:11:11',
+            'button':['0.1/02','05/05','02/05','02/05']
+        },
+    ]
+    var myNetwork = $api.byId('myNetwork');
+    var html = '';
+    var device = '';
+    for(var i in list){
+        html += '<div>'+
+                    '<div class="listLeft">'+
+                        '<p><img src="'+list[i].leftImg+'"></p>'+
+                        '<p name="leftText">'+list[i].leftText+'</p>'+
+                    '</div>'+
+                    '<div class="listRight">'+
+                        '<p class="top"><span name="title">'+list[i].title+'</span>'
+        if(list[i].status){
+            html += '<span name="Online">在线</span>';
+            device = 'OnlineDevice'
+        }else{
+            html += '<span name="Offline">离线</span>';
+            device = 'OfflineDevice'
+        }
+        if(list[i].new){
+            html += '<span class="networkNew">new!</span>'
+        }
+        html += '</p><p name="time">创建于: '+list[i].time+'</p><p name="'+device+'">'
+        var list1 = list[i].button
+        for(var j in list1){
+            html += '<span>'+list1[j]+'</span>'
+        }
+
+        html += '</p></div></div>'
+    }
+    $api.append(myNetwork,html);
+    var children = myNetwork.children
+    for(var c=0;c<children.length;c++){
+        children[c].onclick = function(e){
+            api.openWin({
+                name: 'network_status',
+                url: './network_status.html',
+                pageParam: {
+                    name: 'network_status'
+                }
+            });
+        }
+    }
+
+</script>
+</html>

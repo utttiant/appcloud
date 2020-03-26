@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/service.css">
+    <style>
+    html{
+        height: 100%;
+        background-color: #fff;
+    }
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        #ping{
+        	display: table;
+        	background-color: #f1f1f1;
+        }
+        #homepage{
+            margin-bottom: 0.29rem;
+            border-bottom: .02rem solid #d2d2d2;
+        }
+        #homepage .list>p{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>测试中...</span><span style="float: right;padding-right: 0.29rem;font-size: 0.3rem;">停止</span>
+    </div>
+    <div id="ping">
+		<div class="search">
+			<input type="text" id="search" disabled="true">
+		</div>
+		<div id="pingData">
+			<ul id="uData">
+			</ul>
+		</div>
+		<div id="Result"></div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        
+    };
+    var search = $api.byId('search');
+    search.value = '192.168.16.1';
+    var data = [
+    	{
+    		'name':'发送个数',
+    		'num':10
+    	},
+    	{
+    		'name':'接收个数',
+    		'num':10
+    	},
+    	{
+    		'name':'丢包率',
+    		'num':'0.00%'
+    	},
+    	{
+    		'name':'平均延时',
+    		'num':'101ms'
+    	}
+    ]
+    var uData = $api.byId('uData');
+    var html = '';
+    for(var i in data){
+    	html += '<li><p>'+data[i].name+'</p><p>'+data[i].num+'</p></li>'
+    }
+    $api.append(uData,html);
+    // 搜索结果
+    var Result = $api.byId('Result');
+    Result.innerHTML = '123456'
+</script>
+</html>

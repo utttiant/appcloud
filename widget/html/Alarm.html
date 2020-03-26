@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/alarm.css">
+    <style>
+        p{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        body{
+            background-color: #f6f6f6;
+        }
+        .buttons{
+        	margin-top:2.04rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <svg class="icon" aria-hidden="true" onclick="api.closeWin()">
+            <use xlink:href="#iconzuo"></use>
+        </svg><span>告警通知</span><span style="float: right;font-size: 0.28rem;color:#0781fe;padding-right: 0.47rem;" id="del">清空</span>
+    </div>
+    <div class="alarm">
+		<div class="list_titles">共10条告警/通知</div>
+		<div class="alarmList">
+
+		</div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/common.js"></script>
+<script src="../script/iconfont.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+     //    var winHeight = api.winHeight;
+     //    var main = $api.byId('homepage');
+    	// module.footer(main,winHeight)
+    };
+    var imgarr = ['../image/alarm/off.jpg','../image/alarm/online.jpg']
+   	var list = [
+   		{
+   			'title':'设备离线',
+   			'time':'2019-12-03 15:10:12',
+   			'abnormal':'奋斗厅[12345678910]',
+   			'deviceType':'518GP',
+   			'status':0
+   		},
+   		{
+   			'title':'设备上线',
+   			'time':'2019-12-03 15:10:12',
+   			'abnormal':'奋斗厅[12345678910]',
+   			'deviceType':'518GP',
+   			'status':1
+   		}
+   	]
+   	var box = $api.byClass('alarmList');
+   	var html = '';
+   	for(var i in list){
+   		html += '<div>'+
+			   		'<p>'+
+			   			'<span name="'+list[i].status+'">'+list[i].title+'</span>'+
+			   			'<span>'+list[i].time+'</span>'+
+			   		'</p>'+
+			   		'<p>异常设备：'+list[i].abnormal+'</p>'+
+			   		'<p>设备类型：'+list[i].deviceType+'</p>'+
+		   		'</div>'
+   	}
+   	$api.append(box,html);
+   	var del = $api.byId('del');
+   	del.onclick = function(){
+   		$api.remove(box);
+   		$api.byClass('list_titles').innerHTML = '共0条告警/通知'
+   	}
+</script>
+</html>
