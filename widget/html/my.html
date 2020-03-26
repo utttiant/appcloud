@@ -34,6 +34,8 @@
 <script type="text/javascript">
 var dialogBox;
     apiready = function(){
+        var header = $api.byClass('header');
+        header.style.paddingTop = api.safeArea.top + 'px';
         dialogBox = api.require('dialogBox');
          var winHeight = api.winHeight;
         var main = $api.byId('homepage');

@@ -45,6 +45,8 @@
 <script src="../script/iconfont.js"></script>
 <script type="text/javascript">
     apiready = function(){
+        var header = $api.byClass('header');
+        header.style.paddingTop = api.safeArea.top + 'px';
         var winHeight = api.winHeight;
         var main = $api.byId('network');
         var list = [

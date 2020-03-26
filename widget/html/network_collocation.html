@@ -40,6 +40,8 @@
 var dialogBox;
     apiready = function(){
     dialogBox = api.require('dialogBox');
+    var header = $api.byClass('header');
+        header.style.paddingTop = api.safeArea.top + 'px';
      var winHeight = api.winHeight;
         var main = $api.byId('network');
         var list = [
