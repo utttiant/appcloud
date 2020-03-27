@@ -156,6 +156,8 @@
         if(node.nodeType && node.nodeType === 3){
             node = node.previousSibling;
             return node;
+        }else{
+            return node
         }
     };
     u.next = function(el){

@@ -359,7 +359,7 @@ myModule.prototype.dialogBox = function(){
 		        marginT: 20,       //（可选项）数字类型；内容文本顶端与标题栏底端的距离，如果标题栏不存在，则是到窗口顶端的距离；默认：20
 		        marginB: 20,       //（可选项）数字类型；内容文本底端与 left/right 顶端的距离，如果 left/right 都不存在，则是到对话框底端的距离；默认：20
 		        color: '#000',     //（可选项）字符串类型；内容文本字体颜色，支持 rgb、rgba、#；默认：#eee
-		        size: 12           //（可选项）数字类型：内容文本字体大小；默认：12
+		        size: 14           //（可选项）数字类型：内容文本字体大小；默认：12
 		    },
 		    left:{                 //（可选项）JSON 对象；左边按钮样式配置，不传则不显示左边按钮
 		        marginB: 7,        //（可选项）数字类型；左边按钮的下边距；默认：7
@@ -391,5 +391,55 @@ myModule.prototype.dialogBox = function(){
 		    }
 		}
 		return sty;
+}
+// 提示框调用
+myModule.prototype.alert = function(text){
+	var that = this;
+	dialogBox.alert({
+        texts : {
+            title : '提示',
+            content : text,
+            rightBtnTitle : '确定'
+        },
+        styles:that.dialogBox(),
+        tapClose : true
+    }, function(ret) {
+        dialogBox.close({
+            dialogName: 'alert'
+        });
+    });
+}
+// input框提示验证
+myModule.prototype.getVerification = function(name,value,nullmsg,errormsg){
+	// name:验证名；value:当前数据的值；
+	var that = this;
+	var data = '';
+	if(value == ''){
+		return that.alert(nullmsg)
+	}
+	switch (name){
+		case ('phone'):
+			data = that.setVerification('phone',value,nullmsg);
+		break;
+		case ('pwd'):
+
+		break;
+	}
+	if(!data){
+		that.alert(errormsg);
+	}
+	return data
+}
+// 验证规则
+myModule.prototype.setVerification = function(name,gets,nullmsg){
+	var that = this;
+	var datas = {
+		'phone':/^((1[34578][0-9])|(198|199|166))\d{8}$/,
+		'pwd':/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[~!@#$%^&*()_+`\-={}:";'<>?,.\/])/
+
+	};
+	return datas[name].test(gets);
+	
+
 }
 var module = new myModule();
